@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Tutorial 1</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h2>Series Colombianas</h2>
+                    <table class="table">
+                        <thead class="thead-dark">
+                          <tr>
+                            <th>#</th>
+                            <th>Titulo</th>
+                            <th>Canal</th>
+                            <th>Temporadas</th>
+                          </tr>
+                        </thead>
+                        <tbody id="courses"></tbody>
+                        <tr>
+                            <td>Promedio temporadas: </td>
+                            <td id="average-seasons"></td>
+                        </tr>
+                      </table>
+                </div>
+                <div class="col">
+                    <p id="tarjeta"></p>
+                </div>
+            </div>
+        </div>
+        <script type="module" src="./scripts/course.js" ></script>
+        <script type="module" src="./scripts/dataCourses.js" ></script>
+        <script type="module" src="./scripts/main.js"></script>
+    </body>
+</html>
