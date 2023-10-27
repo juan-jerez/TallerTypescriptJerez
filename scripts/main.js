@@ -1,27 +1,27 @@
-import { dataCourses } from './dataCourses.js';
-var coursesTbody = document.getElementById('courses'); // Nodo tbody que tiene el id="courses"
+import { dataSeries } from './dataSeries.js';
+var seriesTbody = document.getElementById('series'); // Nodo tbody que tiene el id="series"
 var averageSeasonsElm = document.getElementById('average-seasons');
 var descripcionCard = document.getElementById('tarjeta');
-renderCoursesInTable(dataCourses);
-averageSeasonsElm.innerHTML = "".concat(getAverageSeasons(dataCourses));
-function renderCoursesInTable(courses) {
-    courses.forEach(function (c) {
+renderSeriesInTable(dataSeries);
+averageSeasonsElm.innerHTML = "".concat(getAverageSeasons(dataSeries));
+function renderSeriesInTable(series) {
+    series.forEach(function (s) {
         var trElement = document.createElement("tr");
-        trElement.innerHTML = "<td>".concat(c.id, "</td>\n                           <td><a href=\"#\" class=\"serie-link\">").concat(c.titulo, "</a></td>\n                           <td>").concat(c.canal, "</td>\n                           <td>").concat(c.temporadas, "</td>");
-        coursesTbody.appendChild(trElement);
+        trElement.innerHTML = "<td>".concat(s.id, "</td>\n                           <td><a href=\"#\" class=\"serie-link\">").concat(s.titulo, "</a></td>\n                           <td>").concat(s.canal, "</td>\n                           <td>").concat(s.temporadas, "</td>");
+        seriesTbody.appendChild(trElement);
         var serieLink = trElement.querySelector('.serie-link');
         if (serieLink) {
             serieLink.addEventListener('click', function () {
-                renderDetailsInCard(c);
+                renderDetailsInCard(s);
             });
         }
     });
 }
-function getAverageSeasons(courses) {
+function getAverageSeasons(series) {
     var totalSeasons = 0;
     var totalSeries = 0;
-    courses.forEach(function (course) { return totalSeasons = totalSeasons + course.temporadas; });
-    courses.forEach(function (course) { return totalSeries = course.id; });
+    series.forEach(function (course) { return totalSeasons = totalSeasons + course.temporadas; });
+    series.forEach(function (course) { return totalSeries = course.id; });
     return Number((totalSeasons / totalSeries).toFixed(2));
 }
 function renderDetailsInCard(course) {

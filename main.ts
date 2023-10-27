@@ -1,42 +1,42 @@
-import { Course } from './course.js';
+import { Serie } from './sertie.js';
 
-import { dataCourses } from './dataCourses.js';
+import { dataSeries } from './dataSeries.js';
 
-const coursesTbody: HTMLElement = document.getElementById('courses')!; // Nodo tbody que tiene el id="courses"
+const seriesTbody: HTMLElement = document.getElementById('series')!; // Nodo tbody que tiene el id="series"
 let averageSeasonsElm: HTMLElement = document.getElementById('average-seasons')!;
 let descripcionCard: HTMLElement = document.getElementById('tarjeta')!;
 
-renderCoursesInTable(dataCourses);
+renderSeriesInTable(dataSeries);
 
-averageSeasonsElm.innerHTML = `${getAverageSeasons(dataCourses)}`
+averageSeasonsElm.innerHTML = `${getAverageSeasons(dataSeries)}`
 
-function renderCoursesInTable(courses: Course[]): void {
-  courses.forEach(c => {
+function renderSeriesInTable(series: Serie[]): void {
+  series.forEach(s => {
     const trElement = document.createElement("tr");
-    trElement.innerHTML = `<td>${c.id}</td>
-                           <td><a href="#" class="serie-link">${c.titulo}</a></td>
-                           <td>${c.canal}</td>
-                           <td>${c.temporadas}</td>`;
-    coursesTbody.appendChild(trElement);
+    trElement.innerHTML = `<td>${s.id}</td>
+                           <td><a href="#" class="serie-link">${s.titulo}</a></td>
+                           <td>${s.canal}</td>
+                           <td>${s.temporadas}</td>`;
+    seriesTbody.appendChild(trElement);
     
     const serieLink = trElement.querySelector('.serie-link');
     if (serieLink) {
       serieLink.addEventListener('click', () => {
-        renderDetailsInCard(c);
+        renderDetailsInCard(s);
       });
     }
   });
 }
 
-function getAverageSeasons(courses: Course[]): number {
+function getAverageSeasons(series: Serie[]): number {
     let totalSeasons: number = 0;
     let totalSeries: number = 0;
-    courses.forEach((course) => totalSeasons = totalSeasons + course.temporadas);
-    courses.forEach((course) => totalSeries = course.id);
+    series.forEach((course) => totalSeasons = totalSeasons + course.temporadas);
+    series.forEach((course) => totalSeries = course.id);
     return Number((totalSeasons/totalSeries).toFixed(2));
   }
 
-function renderDetailsInCard(course: Course): void {
+function renderDetailsInCard(course: Serie): void {
     descripcionCard.innerHTML = `<div class="card" style="width: 18rem;">
     <img class="card-img-top" src="${course.imagen}" alt="Card image cap">
     <div class="card-body">

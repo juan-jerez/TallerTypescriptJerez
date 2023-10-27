@@ -1,4 +1,4 @@
-export class Course {
+export class Serie {
     id: number;
     titulo: string;
     canal: string;
